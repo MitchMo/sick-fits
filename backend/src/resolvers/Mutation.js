@@ -57,7 +57,7 @@ const Mutations = {
         }, info);
 
         //4. Create JWT token for the new user since we already have the password
-        const token = jwt.sign({ userId: user.Id }, process.env.APP_SECRET);
+        const token = jwt.sign({ userId: user.id }, process.env.APP_SECRET);
 
         //5. Set the JWT as a cookie on the response
         ctx.response.cookie('token', token, {
