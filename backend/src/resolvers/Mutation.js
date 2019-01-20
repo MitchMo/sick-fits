@@ -73,7 +73,7 @@ const Mutations = {
     //Example of destructuring the args parameter for easier readability
     async signin(parent, { email, password }, ctx, info) {
         //1. Check if a user has that email
-        const user = await ctx.db.query.user({ where: { email: email } }, info);
+        const user = await ctx.db.query.user({ where: { email: email } });
 
         if(!user) {
             throw new Error(`Invalid email or password.`);
@@ -106,8 +106,6 @@ const Mutations = {
     async requestReset(parent, args, ctx, info) {
         //1. Verify it is a real user
         const user = await ctx.db.query.user({ where: { email: args.email } });
-
-        console.log(user);
 
         if(!user) {
             throw new Error(`No user found with that email.`);
